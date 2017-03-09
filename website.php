@@ -196,8 +196,9 @@ img {
 <script>
 
 console.log("HELLO");
-
-/*
+/* Function for bringing the note information to the screen when clicked
+*/
+	
 $(".note_box").click(function()
 {
 	var $right_input = $('#right_input')
@@ -213,6 +214,7 @@ $(".note_box").click(function()
 	})
 });
 */
+
 
 
 $(function(){
@@ -243,7 +245,9 @@ $(function(){
 
 <div id= "left">
 	<?php
-
+	
+	/* Fetching all of the notes and displaying them on the website
+	*/
 
 	while($row= mysql_fetch_array($query))
 	{
