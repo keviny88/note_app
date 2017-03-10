@@ -14,6 +14,12 @@ $query= mysql_query("SELECT * FROM notes ORDER BY note_date DESC");
 
 <html>
 <head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 
 	<title> KEVIN's WEBPAGE </title>
@@ -194,39 +200,26 @@ img {
 <body>
 
 <script>
+/* Jquery section of the application. Handles the clicking of thenote box to display the information to the right section */
+	
+$(document).ready(function() {
 
 console.log("HELLO");
-/* Function for bringing the note information to the screen when clicked
-*/
-	
-$(".note_box").click(function()
-{
-	var $right_input = $('#right_input')
-	var url= "api.php?id=" + $(this).attr("id")
+
+$('.note_box').click(function(){
+	var selectedNote = $(this).attr('id');
+	var url = "api.php?id=" + selectedNote;
 	$.ajax(
 	{
 		type: 'GET',
 		url: url,
 		success: function(data) 
 		{
-			$right_input.append(data);
+			console.log("PRINTING!")
+			$(".form-control").append(data);
 		}
 	})
 });
-*/
-
-
-
-$(function(){
-	var $right_input = $('#right_input')
-	$.ajax({
-		type: 'GET',
-		url: "api.php?id=" + "1",
-		success: function(data) {
-			$right_input.append(data);
-		}
-	});
-
 
 });
 
@@ -270,6 +263,13 @@ $(function(){
 		<div id= "right_header_date"> January 4th, 2017</div>
 	</div>
 	<div id= "right_input">
+			<div class="form-group">
+    				<label for="exampleTextarea"></label>
+    				<textarea class="form-control" id="exampleTextarea" rows="30"></textarea>
+  				</div>
+  				<div class="form-group">
+		</div>
+
 	</div>
 </div>
 
@@ -277,6 +277,7 @@ $(function(){
 
 
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 </body>
